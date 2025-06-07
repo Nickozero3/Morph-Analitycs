@@ -4,12 +4,12 @@ import './Carrousel.css';
 const DualCarousel = () => {
   // Array de imágenes (debe tener número par de elementos)
   const images = [
-    { id: 1, url: '/images/azure.png', alt: 'Azure' },
-    { id: 2, url: '/images/security.webp', alt: 'Security' },
+    { id: 1, url: '/Images/azure.png', alt: 'Azure' },
+    { id: 2, url: '/Images/security.webp', alt: 'Security' },
     { id: 3, url: '/Images/infrastructura.webp', alt: 'Infraestructura' },
-    { id: 4, url: '/images/devolopmen_tegnology.jpg', alt: 'Desarrollo' },
-    { id: 5, url: '/images/datasecurity.webp', alt: 'Seguridad de datos' },
-    { id: 6, url: '/images/webdesing.jpg', alt: 'Diseño web' },
+    { id: 4, url: '/Images/devolopmen_tegnology.jpg', alt: 'Desarrollo' },
+    { id: 5, url: '/Images/datasecurity.webp', alt: 'Seguridad de datos' },
+    { id: 6, url: '/Images/webdesing.jpg', alt: 'Diseño web' },
     // ejemplo de añadir nuevas imagenes
     // {id: 1, url: '/images/azure.png', alt: 'Azure'},
     // {id: 1, url: '/images/azure.png', alt: 'Azure'}

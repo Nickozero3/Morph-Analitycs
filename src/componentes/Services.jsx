@@ -21,7 +21,7 @@ const Services = () => {
       title: "DevOps",
       description:
         "Simplificamos y aceleramos tu ciclo de desarrollo con prácticas de DevOps que integran perfectamente a tus equipos de desarrollo y operaciones. Nos enfocamos en la automatización, la integración continua y el despliegue continuo para ofrecerte una agilidad sin precedentes.",
-      icon: "/images/devops.jpg",
+      icon: "/Images/devops.jpg",
       features: [
         "Auditorías de seguridad",
         "Protección contra malware",
