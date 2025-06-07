@@ -22,6 +22,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
+  margin: 0px 4rem;
 }
 
 .service-card {
@@ -30,7 +31,6 @@
   padding: 30px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.452);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: auto 20px;
   min-height: 100%;
   display: flex;
   flex-direction: column;

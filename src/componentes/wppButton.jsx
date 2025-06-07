@@ -3,7 +3,7 @@ import './wppButton.css';
 
 const WhatsAppButton = () => {
   const phoneNumber = '5493548554840'; // Cambialo por tu número real
-  const message = encodeURIComponent('Hola, estoy interesado en un producto de Morph Analitycs.');
+  const message = encodeURIComponent('Hola, estoy interesado en contactar con Morph Analitycs.');
 
 
   return (

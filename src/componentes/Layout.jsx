@@ -5,6 +5,7 @@ import WppButton from "./wppButton.jsx";
 import HeroImgI from "./HeroImgI.jsx";
 import Carrousel from "./Carrousel.jsx";
 import Services from "./Services.jsx";
+import Collaborations from "./Collaborations.jsx";
 
 const Layout = () => {
   return (
@@ -14,6 +15,7 @@ const Layout = () => {
         <Carrousel/>
         <HeroImgI/>
         <Services/>
+        <Collaborations/>
         <WppButton /></div>
       <div className="item footer"><Footer /></div>
     </div>

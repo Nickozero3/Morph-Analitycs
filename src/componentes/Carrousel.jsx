@@ -75,6 +75,7 @@ const DualCarousel = () => {
           />
         ))}
       </div>
+      
     </div>
   );
 };
