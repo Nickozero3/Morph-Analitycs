@@ -3,9 +3,21 @@ import "./HeroImgI.css";
 
 const Hero = () => {
   return (
-    <div className="hero-container">
+    <div className="hero-container" id="nosotros">
       <div className="hero-content">
-        <img src="/Images/technology.webp" alt="Tecnología" className="hero-image" />
+        {/* Imagen con degradé + overlay */}
+        <div className="hero-image-wrapper">
+          <img
+            src="/Images/technology.webp"
+            alt="Tecnología"
+            className="hero-image"
+          />
+          <div className="image-overlay">
+            <p className="overlay-text">Tecnología que impulsa tu futuro</p>
+          </div>
+        </div>
+
+        {/* Texto principal */}
         <div className="hero-text">
           <h1>Bienvenido a Morph Analytics</h1>
           <p>Donde la tecnología se transforma en soluciones innovadoras.</p>
@@ -14,7 +26,8 @@ const Hero = () => {
             Información y DevOps, ofreciendo a nuestros clientes no solo
             productos y servicios de alta calidad, sino también una experiencia
             fluida y segura en cada etapa de su transformación digital.
-            <br /><br />
+            <br />
+            <br />
             En Morph Analytics estamos redefiniendo la manera en que las
             empresas piensan en tecnología, brindando soluciones que no solo
             resuelven problemas, sino que también abren nuevas oportunidades

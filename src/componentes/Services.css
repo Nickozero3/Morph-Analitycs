@@ -44,19 +44,24 @@
 .service-icon img{
   font-size: 2.5rem;
   margin-bottom: 20px;
-  max-width: 100px;
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 200px;
+  max-height: 200px;
 }
 
 .service-title {
   font-size: 1.5rem;
   color: #2c3e50;
   margin-bottom: 15px;
+  min-height: 80px;
 }
 
 .service-description {
   color: #7f8c8d;
   line-height: 1.6;
   margin-bottom: 20px;
+  min-height: 280px;
 }
 
 .service-features {
@@ -98,14 +103,31 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .service-card{
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    min-height:auto;
+  }
+
+  .service-icon{
+    display: flex;
+    justify-content: center;
+  }
+
   .services-grid {
     grid-template-columns: 1fr;
+    margin: 0 10px;
   }
   
   .section-title {
     font-size: 2rem;
+    min-height: auto;
   }
   
+  .service-description{
+    min-height: auto;
+  }
   .section-subtitle {
     font-size: 1rem;
   }

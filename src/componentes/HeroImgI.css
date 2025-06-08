@@ -25,9 +25,12 @@
   object-fit: contain; /* esto hace el efecto "cover" */
   border-radius: 15px;
   object-position: center; /* centra la imagen dentro del contenedor */
-  mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
-  mask-mode: match-source;
-  -webkit-mask-image: radial-gradient(circle at center, black 70%, transparent 100);
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 40%,
+    transparent 100%
+  );
 }
 
 .hero-text {
@@ -70,7 +73,7 @@ p {
 }
 
 .cta-button {
-  border: 1px solid #fff;
+  border: 0.5px solid #fff;
   padding: 10px 30px;
   border-radius: 25px;
   text-decoration: none;
@@ -85,6 +88,58 @@ p {
   background-color: #3a7bc8;
   transform: translateY(-2px);
 }
+.hero-image-wrapper {
+  position: relative;
+  width: 400px; /* mismo ancho que .hero-image */
+  height: 400px; /* misma altura que .hero-image */
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+
+  /* degradé radial negro en los bordes */
+  mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 70%,
+    transparent 100%
+  );
+  mask-mode: match-source;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  border-radius: 15px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.hero-image-wrapper:hover .image-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
 
 /* Responsive design */
 @media (max-width: 900px) {
@@ -92,7 +147,7 @@ p {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .hero-image {
     width: 100%;
     max-width: 400px;

@@ -9,7 +9,7 @@ const Services = () => {
       title: "Desarrollo de Software a Medida",
       description:
         "Creamos soluciones a medida que impulsan tu negocio hacia el futuro. Nuestro equipo de desarrolladores está comprometido con la excelencia, utilizando las últimas tecnologías para garantizar que cada producto sea robusto, escalable y alineado con tus objetivos.",
-      icon: "/Images/brainclock.png",
+      icon: "/Images/websiteBuilder.svg",
       features: [
         "Desarrollo de software personalizado",
         "Integración con APIs y sistemas existentes",
@@ -21,7 +21,7 @@ const Services = () => {
       title: "DevOps",
       description:
         "Simplificamos y aceleramos tu ciclo de desarrollo con prácticas de DevOps que integran perfectamente a tus equipos de desarrollo y operaciones. Nos enfocamos en la automatización, la integración continua y el despliegue continuo para ofrecerte una agilidad sin precedentes.",
-      icon: "/Images/devops.jpg",
+      icon: "/Images/enviroment_dev.svg",
       features: [
         "Auditorías de seguridad",
         "Protección contra malware",
@@ -33,7 +33,7 @@ const Services = () => {
       title: "Seguridad en tus proyectos",
       description:
         "La protección de tus datos es nuestra prioridad. Implementamos estrategias avanzadas de ciberseguridad que garantizan la integridad, confidencialidad y disponibilidad de la información crítica de tu organización.",
-      icon: "/Images/securityimg.jpg",
+      icon: "/Images/securitysync.svg",
       features: [
         "Implementación de políticas de seguridad",
         "Monitoreo de vulnerabilidades",

@@ -2,7 +2,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import './wppButton.css';
 
 const WhatsAppButton = () => {
-  const phoneNumber = '5493548554840'; // Cambialo por tu número real
+  const phoneNumber = '5493512869149'; // Cambialo por tu número real
   const message = encodeURIComponent('Hola, estoy interesado en contactar con Morph Analitycs.');
 
 
