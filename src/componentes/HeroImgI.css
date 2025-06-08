@@ -88,10 +88,12 @@ p {
   background-color: #3a7bc8;
   transform: translateY(-2px);
 }
+
 .hero-image-wrapper {
   position: relative;
-  width: 400px; /* mismo ancho que .hero-image */
-  height: 400px; /* misma altura que .hero-image */
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1; /* Mantiene proporción cuadrada */
   border-radius: 15px;
   overflow: hidden;
 }
@@ -99,18 +101,15 @@ p {
 .hero-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover; /* Mejor que 'contain' para que llene el área */
   object-position: center;
 
-  /* degradé radial negro en los bordes */
+  /* degradé radial */
   mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
-  -webkit-mask-image: radial-gradient(
-    circle at center,
-    black 70%,
-    transparent 100%
-  );
+  -webkit-mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
   mask-mode: match-source;
 }
+
 
 .image-overlay {
   position: absolute;
@@ -148,9 +147,9 @@ p {
     align-items: center;
   }
 
-  .hero-image {
+  .hero-image-wrapper {
     width: 100%;
-    max-width: 400px;
+    max-width: 90vw; /* más adaptable aún */
     margin-bottom: 20px;
   }
 }

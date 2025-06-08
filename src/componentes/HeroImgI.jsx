@@ -8,12 +8,12 @@ const Hero = () => {
         {/* Imagen con degradé + overlay */}
         <div className="hero-image-wrapper">
           <img
-            src="/Images/technology.webp"
+            src="/Images/desing.svg"
             alt="Tecnología"
             className="hero-image"
           />
           <div className="image-overlay">
-            <p className="overlay-text">Tecnología que impulsa tu futuro</p>
+            <p className="overlay-text">Impulsa tu futuro a la par de la Tegnologica</p>
           </div>
         </div>
 

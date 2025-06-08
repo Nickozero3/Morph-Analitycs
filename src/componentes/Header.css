@@ -87,9 +87,8 @@ header {
 
 }
 
-.cta-button {
-  background-color: var(--color-accent);
-  color: white;
+.cta-buttonn {
+  background-color: rgb(112, 112, 252);
   padding: 8px 20px;
   border-radius: 20px;
 }

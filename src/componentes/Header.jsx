@@ -60,7 +60,7 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="#contacto" className="cta-button" onClick={closeMenu}>
+              <a href="#contacto" className="cta-buttonn" onClick={closeMenu}>
                 Contáctanos
               </a>
             </li>
