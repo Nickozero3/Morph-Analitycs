@@ -11,7 +11,7 @@ const Collaborations = () => {
       url: "https://kaizenit.com.ar/",
     },
     {
-      id: 1,
+      id: 2,
       name: "Kayzen IT",
       logo: "/Images/kaizen_it.webp",
       url: "https://kaizenit.com.ar/",
@@ -41,7 +41,7 @@ const Collaborations = () => {
   return (
     <section className="collaborations-section">
       <div className="container">
-        <h2 className="section-title" id="partners">Alianzas</h2>
+        <h2 className="section-title" id="partners">⸻ Alianzas ⸻</h2>
         <div className="partners-grid">
           {partners.map((partner) => (
             <a
@@ -67,7 +67,7 @@ const Collaborations = () => {
         </div>
       </div>
       <div className="container">
-        <h2 className="section-title" id="clientes">Nuestros Clientes</h2>
+        <h2 className="section-title" id="clientes">⸻ Nuestros Clientes ⸻</h2>
         <div className="partners-grid">
           {clients.map((client) => (
             <a

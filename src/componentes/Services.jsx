@@ -45,7 +45,7 @@ const Services = () => {
   return (
     <section className="services-section">
       <div className="container">
-        <h2 className="section-title">Alianzas</h2>
+        <h2 className="section-title">¿Que brindamos?</h2>
         <p className="section-subtitle">
           Soluciones tecnológicas diseñadas para impulsar tu negocio
         </p>

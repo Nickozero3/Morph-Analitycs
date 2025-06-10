@@ -65,21 +65,6 @@ const Header = () => {
               </a>
             </li>
           </ul>
-          <div className="language-switch">
-            <select
-              onChange={(e) => {
-                const lang = e.target.value;
-                const googleSelect = document.querySelector(".goog-te-combo");
-                if (googleSelect) {
-                  googleSelect.value = lang;
-                  googleSelect.dispatchEvent(new Event("change"));
-                }
-              }}
-            >
-              <option value="es">ES</option>
-              <option value="en">EN</option>
-            </select>
-          </div>
         </div>
       </nav>
     </header>

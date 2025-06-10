@@ -1,13 +1,13 @@
 .collaborations-section {
   padding: 80px 40px;
-  background-color: #f8f9fa;
+  background-color: black;
 
 }
 
 .section-title {
   text-align: center;
   font-size: 1.8rem;
-  color: #2c3e50;
+  color: #3498db;
   margin-bottom: 15px;
 }
 
@@ -34,7 +34,7 @@
   transition: transform 0.3s ease;
   padding: 16px;
   border-radius: 10px;
-  background: white;
+  background: rgba(80, 94, 110, 0.877);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   width: 100%;
   max-width: 280px;
@@ -43,15 +43,15 @@
 
 .partner-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 28px rgba(118, 216, 187, 0.616);
 }
 
 .partner-logo {
-  height: 90px;
+  height: 135px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .partner-logo img {
@@ -69,7 +69,7 @@
 }
 
 .partner-name {
-  color: #2c3e50;
+  color: rgb(236, 236, 236);
   font-size: 1.2rem;
   text-align: center;
   margin: 0;
@@ -77,7 +77,7 @@
 }
 
 .partner-card:hover .partner-name {
-  color: #3498db;
+  color: #333edb;
 }
 
 /* Responsive */

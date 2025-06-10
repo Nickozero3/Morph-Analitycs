@@ -12,7 +12,7 @@ const Layout = () => {
     <div className="container">
       <div className="item header"><Header /></div>
       <div className="item content">
-        <Carrousel/>
+        {/* <Carrousel/> */}
         <HeroImgI/>
         <Services/>
         <Collaborations/>

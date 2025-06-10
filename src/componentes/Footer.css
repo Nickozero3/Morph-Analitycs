@@ -5,6 +5,7 @@ footer{
     padding: 20px;
     bottom: 0;
     width: 100%;
+    text-decoration: none;
 }
 
 .footer-content {
@@ -25,11 +26,12 @@ footer p {
     margin-bottom: 10px;
 }
 
+
 ul.social-links {
     display: block;
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 10px;
+    margin: 15px ;
     display: flex;
     justify-content: center;
     gap: 15px;

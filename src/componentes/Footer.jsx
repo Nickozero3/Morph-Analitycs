@@ -9,7 +9,7 @@ const Footer = () => {
             <div className="footer-content">
                 <ul className="social-links">
                     <li>
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.facebook.com/caceresabelanibal" target="_blank" rel="noopener noreferrer">
                             <FaFacebook /> Facebook
                         </a>
                     </li>
@@ -19,7 +19,7 @@ const Footer = () => {
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/caceresabelanibal/" target="_blank" rel="noopener noreferrer">
                             <FaInstagram /> Instagram
                         </a>
                     </li>

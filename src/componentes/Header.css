@@ -8,7 +8,7 @@
 
 /* --- Base Styles --- */
 header {
-  background-color: var(--color-white);
+  background-color: white;
   position: relative;
   z-index: 1000;
 }
@@ -20,11 +20,14 @@ header {
   padding: 15px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  background-color: white;
+  border-bottom: rgb(42, 122, 128) 1px solid;
 }
 
 .logo img {
   height: 80px;
   width: auto;
+  /* filter: invert(100%); */
 }
 
 /* --- Burger Menu Icon --- */
@@ -80,22 +83,21 @@ header {
   text-decoration: none;
   font-weight: 500;
   transition: color var(--transition-speed);
+  color: black;
 }
 
 .nav-links a:hover {
-  color: rgb(255, 255, 0);
+  color: rgb(51, 55, 245);
 
 }
 
 .cta-buttonn {
   background-color: rgb(112, 112, 252);
+  color: black;
   padding: 8px 20px;
   border-radius: 20px;
 }
 
-.language-switch {
-  margin-left: 20px;
-}
 
 /* --- Mobile Styles --- */
 @media (max-width: 768px) {
@@ -117,6 +119,7 @@ header {
     transition: transform var(--transition-speed) ease;
     padding-top: 80px;
     z-index: 1000;
+    color: #fff;
   }
 
   .nav-links.active {
@@ -142,14 +145,4 @@ header {
   body.menu-open {
     overflow: hidden;
   }
-}
-
-.goog-te-banner-frame.skiptranslate,
-.goog-te-gadget-icon,
-#goog-gt-tt,
-body > .goog-te-banner-frame {
-  display: none !important;
-}
-body {
-  top: 0 !important;
 }
