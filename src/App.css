@@ -18,10 +18,6 @@ html,body{
   box-sizing: inherit;
 }
 
-a:visited {
-  color: inherit; /* o poné otro color si querés */
-}
-
 .App {
   text-align: center;
   background-color: #282c34;

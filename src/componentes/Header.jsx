@@ -44,11 +44,11 @@ const Header = () => {
                 Nosotros
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="#careers" onClick={closeMenu}>
                 Careers
               </a>
-            </li>
+            </li> */}
             <li>
               <a href="#partners" onClick={closeMenu}>
                 Partners

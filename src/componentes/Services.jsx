@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Services.css";
 
 const Services = () => {
-  // Datos de los servicios
   const services = [
     {
       id: 1,
       title: "Desarrollo de Software a Medida",
       description:
         "Creamos soluciones a medida que impulsan tu negocio hacia el futuro. Nuestro equipo de desarrolladores está comprometido con la excelencia, utilizando las últimas tecnologías para garantizar que cada producto sea robusto, escalable y alineado con tus objetivos.",
-      icon: "/Images/websiteBuilder.svg",
+      descriptionLarge:
+        "Creamos soluciones a medida que impulsan tu negocio hacia el futuro. Nuestro equipo de desarrolladores está comprometido con la excelencia, utilizando las últimas tecnologías para garantizar que cada producto sea robusto, escalable y alineado con tus objetivos. Desde aplicaciones web hasta sistemas empresariales complejos, estamos aquí para transformar tus ideas en realidades digitales.",
+        icon: "/Images/websiteBuilder.svg",
       features: [
         "Desarrollo de software personalizado",
         "Integración con APIs y sistemas existentes",
@@ -21,6 +22,8 @@ const Services = () => {
       title: "DevOps",
       description:
         "Simplificamos y aceleramos tu ciclo de desarrollo con prácticas de DevOps que integran perfectamente a tus equipos de desarrollo y operaciones. Nos enfocamos en la automatización, la integración continua y el despliegue continuo para ofrecerte una agilidad sin precedentes.",
+      descriptionLarge:
+        "Simplificamos y aceleramos tu ciclo de desarrollo con prácticas de DevOps que integran perfectamente a tus equipos de desarrollo y operaciones. Nos enfocamos en la automatización, la integración continua y el despliegue continuo para ofrecerte una agilidad sin precedentes. Con nuestras soluciones DevOps, podrás reducir el tiempo de lanzamiento al mercado, mejorar la calidad del software y optimizar tus recursos.",
       icon: "/Images/enviroment_dev.svg",
       features: [
         "Auditorías de seguridad",
@@ -33,6 +36,8 @@ const Services = () => {
       title: "Seguridad en tus proyectos",
       description:
         "La protección de tus datos es nuestra prioridad. Implementamos estrategias avanzadas de ciberseguridad que garantizan la integridad, confidencialidad y disponibilidad de la información crítica de tu organización.",
+      descriptionLarge:
+        "La protección de tus datos es nuestra prioridad. Implementamos estrategias avanzadas de ciberseguridad que garantizan la integridad, confidencialidad y disponibilidad de la información crítica de tu organización. Desde auditorías de seguridad hasta la implementación de políticas de seguridad, nuestro equipo está preparado para enfrentar los desafíos más complejos en el ámbito de la ciberseguridad.",
       icon: "/Images/securitysync.svg",
       features: [
         "Implementación de políticas de seguridad",
@@ -41,6 +46,12 @@ const Services = () => {
       ],
     },
   ];
+
+  // Estado para saber qué servicio está abierto en el modal (id o null)
+  const [openServiceId, setOpenServiceId] = useState(null);
+
+  // Buscar servicio seleccionado
+  const selectedService = services.find(s => s.id === openServiceId);
 
   return (
     <section className="services-section">
@@ -65,11 +76,43 @@ const Services = () => {
                 ))}
               </ul>
 
-              <button className="service-button">Más información</button>
+              <button
+                className="service-button"
+                onClick={() => setOpenServiceId(service.id)}
+              >
+                Más información
+              </button>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedService && (
+        <div
+          className="modal-overlay"
+          onClick={() => setOpenServiceId(null)}
+        >
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2>{selectedService.title}</h2>
+            <p>{selectedService.descriptionLarge}</p>
+            <ul>
+              {selectedService.features.map((f, i) => (
+                <li key={i}>{f}</li>
+              ))}
+            </ul>
+            <button
+              onClick={() => setOpenServiceId(null)}
+              className="close-button"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
