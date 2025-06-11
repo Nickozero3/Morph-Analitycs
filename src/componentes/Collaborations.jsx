@@ -22,19 +22,19 @@ const Collaborations = () => {
     {
       id: 1,
       name: "Cliente 1",
-      logo: "a",
+      logo: "/Images/a.webp",
       url: "a",
     },
     {
       id: 2,
       name: "Cliente 2",
-      logo: "b",
+      logo: "/Images/b.webp",
       url: "b",
     },
     {
       id: 3,
       name: "Cliente 3",
-      logo: "c",
+      logo: "/Images/c.webp",
       url: "c",
     },
   ];

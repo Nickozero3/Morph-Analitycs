@@ -31,3 +31,6 @@ para mostrar los servicios que ofrecio nuestra empresa, utiliza un array (id,tit
 --- Colaborations ---
 *   En el archivo "/src/componentes/Collaborations.jsx" se encuentran 2 arrays (partners,clients) en dichos array añadiendo un nuevo objeto (id,name,logo,url) ya se visualizarian
 
+importante las imagenes van en la carpeta "/public/Images" 
+y hay un ejemplo de ruta en el array
+
