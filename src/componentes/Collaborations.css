@@ -110,6 +110,7 @@
 
 @media (max-width: 480px) {
   .partners-grid {
+    padding: 0px 10px;
     grid-template-columns: repeat(2, 1fr);
   }
 
