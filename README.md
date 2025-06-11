@@ -23,4 +23,11 @@ que se utiliza en la aplicacion, este componente es el Carousel, el cual es un c
 
 --- Services ---
 *   En el archivo "/src/componentes/Services.jsx" se encuentra el componente que se utiliza
-para mostrar los servicios que ofrecio nuestra empresa, utiliza un array 
+para mostrar los servicios que ofrecio nuestra empresa, utiliza un array (id,title,description,descriptionLarge,icon,features), añadiendo un nuevo objeto se visualiza un nuevo panel (devops,seguridad,etc)
+
+--- Form ---
+*   En el archivo  "/src/componentes/Form.jsx" se encuentra el componente y las funciones de JS para el formulario de contacto a whatsapp ( con gmail, nombre y informacion)
+
+--- Colaborations ---
+*   En el archivo "/src/componentes/Collaborations.jsx" se encuentran 2 arrays (partners,clients) en dichos array añadiendo un nuevo objeto (id,name,logo,url) ya se visualizarian
+
