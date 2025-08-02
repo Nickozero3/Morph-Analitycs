@@ -5,14 +5,8 @@ const Collaborations = () => {
   // Datos de las Alianzas
   const partners = [
     {
-      id: 1,
-      name: "Kayzen IT",
-      logo: "/Images/kaizen_it.webp",
-      url: "https://kaizenit.com.ar/",
-    },
-    {
       id: 2,
-      name: "Kayzen IT",
+      name: "",
       logo: "/Images/kaizen_it.webp",
       url: "https://kaizenit.com.ar/",
     },
@@ -21,27 +15,27 @@ const Collaborations = () => {
   const clients = [
     {
       id: 1,
-      name: "Cliente 1",
-      logo: "/Images/a.webp",
-      url: "a",
+      name: "",
+      logo: "/Images/coop-logo.png",
+      url: "https://cooperativaprogresoseguridad.com/",
     },
-    {
-      id: 2,
-      name: "Cliente 2",
-      logo: "/Images/b.webp",
-      url: "b",
-    },
-    {
-      id: 3,
-      name: "Cliente 3",
-      logo: "/Images/c.webp",
-      url: "c",
-    },
+//    {
+//      id: 2,
+//      name: "Cliente 2",
+//     logo: "/Images/b.webp",
+//      url: "b",
+//    },
+//    {
+//      id: 3,
+//      name: "Cliente 3",
+//      logo: "/Images/c.webp",
+//      url: "c",
+//    },
   ];
   return (
     <section className="collaborations-section">
       <div className="container">
-        <h2 className="section-title" id="partners">⸻ Alianzas ⸻</h2>
+        <h2 className="section-title" id="partners">⸻ Alianzas / Productos ⸻</h2>
         <div className="partners-grid">
           {partners.map((partner) => (
             <a

@@ -2,25 +2,15 @@ import React from 'react';
 import './Footer.css'; // Assuming you have a CSS file for styling
 // react icons
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
-
+import { FaLinkedin } from 'react-icons/fa';
 const Footer = () => {
     return (
         <footer>
             <div className="footer-content">
                 <ul className="social-links">
                     <li>
-                        <a href="https://www.facebook.com/caceresabelanibal" target="_blank" rel="noopener noreferrer">
-                            <FaFacebook /> Facebook
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-                            <FaTwitter /> Twitter
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/caceresabelanibal/" target="_blank" rel="noopener noreferrer">
-                            <FaInstagram /> Instagram
+                        <a href="https://www.linkedin.com/company/morph-analytics" target="_blank" rel="noopener noreferrer">
+                            <FaLinkedin /> LinkedIn
                         </a>
                     </li>
                 </ul>

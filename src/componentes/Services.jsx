@@ -5,12 +5,12 @@ const Services = () => {
   const services = [
     {
       id: 1,
-      title: "Desarrollo de Software a Medida",
+      title: "",
       description:
         "Creamos soluciones a medida que impulsan tu negocio hacia el futuro. Nuestro equipo de desarrolladores está comprometido con la excelencia, utilizando las últimas tecnologías para garantizar que cada producto sea robusto, escalable y alineado con tus objetivos.",
       descriptionLarge:
         "Creamos soluciones a medida que impulsan tu negocio hacia el futuro. Nuestro equipo de desarrolladores está comprometido con la excelencia, utilizando las últimas tecnologías para garantizar que cada producto sea robusto, escalable y alineado con tus objetivos. Desde aplicaciones web hasta sistemas empresariales complejos, estamos aquí para transformar tus ideas en realidades digitales.",
-        icon: "/Images/websiteBuilder.svg",
+        icon: "/Images/dev.png",
       features: [
         "Desarrollo de software personalizado",
         "Integración con APIs y sistemas existentes",
@@ -19,26 +19,27 @@ const Services = () => {
     },
     {
       id: 2,
-      title: "DevOps",
+      title: "",
       description:
-        "Simplificamos y aceleramos tu ciclo de desarrollo con prácticas de DevOps que integran perfectamente a tus equipos de desarrollo y operaciones. Nos enfocamos en la automatización, la integración continua y el despliegue continuo para ofrecerte una agilidad sin precedentes.",
+        "Simplificamos y aceleramos tu ciclo de desarrollo con prácticas de DevOps que integran perfectamente a tus equipos de desarrollo y operaciones. Nos enfocamos en la automatización, la integración continua y el despliegue continuo para ofrecerte una agilidad sin precedentes. También nos ocupamos de automatizar tus procesos, minimizando las horas hombre destinadas a tareas repetitivas, generando por medio de scripts y pipelines, procesos automatizados adaptables y mantenibles en el tiempo.",
       descriptionLarge:
         "Simplificamos y aceleramos tu ciclo de desarrollo con prácticas de DevOps que integran perfectamente a tus equipos de desarrollo y operaciones. Nos enfocamos en la automatización, la integración continua y el despliegue continuo para ofrecerte una agilidad sin precedentes. Con nuestras soluciones DevOps, podrás reducir el tiempo de lanzamiento al mercado, mejorar la calidad del software y optimizar tus recursos.",
-      icon: "/Images/enviroment_dev.svg",
+      icon: "/Images/ops.png",
       features: [
         "Auditorías de seguridad",
         "Protección contra malware",
         "Cifrado de datos",
+        "Automatizamos todo!",
       ],
     },
     {
       id: 3,
-      title: "Seguridad en tus proyectos",
+      title: "",
       description:
         "La protección de tus datos es nuestra prioridad. Implementamos estrategias avanzadas de ciberseguridad que garantizan la integridad, confidencialidad y disponibilidad de la información crítica de tu organización.",
       descriptionLarge:
         "La protección de tus datos es nuestra prioridad. Implementamos estrategias avanzadas de ciberseguridad que garantizan la integridad, confidencialidad y disponibilidad de la información crítica de tu organización. Desde auditorías de seguridad hasta la implementación de políticas de seguridad, nuestro equipo está preparado para enfrentar los desafíos más complejos en el ámbito de la ciberseguridad.",
-      icon: "/Images/securitysync.svg",
+      icon: "/Images/seg.png",
       features: [
         "Implementación de políticas de seguridad",
         "Monitoreo de vulnerabilidades",

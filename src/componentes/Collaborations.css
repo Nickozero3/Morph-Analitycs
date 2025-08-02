@@ -109,21 +109,27 @@
 }
 
 @media (max-width: 480px) {
+
   .partners-grid {
-    padding: 0px 10px;
-    grid-template-columns: repeat(2, 1fr);
+   justify-content: center;       /* centrado horizontal */
+   justify-items: center;         /* centra las celdas */
+   margin: 0 auto;                /* centrado del grid en el contenedor */
+   width: 100%;
   }
 
   .collaborations-section {
     padding: 40px 0;
   }
 
-  .partner-logo {
-    height: 60px;
+  .partner-logo img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .partner-card {
     padding: 12px;
+    text-align: center;
   }
 
   .partner-name {

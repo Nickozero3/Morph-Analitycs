@@ -8,12 +8,12 @@ const Hero = () => {
         {/* Imagen con degradé + overlay */}
         <div className="hero-image-wrapper">
           <img
-            src="/Images/desing.svg"
+            src="/Images/logocgpt2.png"
             alt="Tecnología"
             className="hero-image"
           />
           <div className="image-overlay">
-            <p className="overlay-text">Impulsa tu futuro a la par de la Tegnologica</p>
+            <p className="overlay-text">Impulsa tu futuro a la par de la Tecnología</p>
           </div>
         </div>
 
@@ -34,7 +34,7 @@ const Hero = () => {
             para el crecimiento y la innovación.
           </p>
           <p className="titular">Anibal Cáceres - CEO de Morph Analytics</p>
-          <a href="#contact" className="cta-button">
+          <a href="#contacto" className="cta-button">
             Contáctanos
           </a>
         </div>
