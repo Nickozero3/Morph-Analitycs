@@ -2,86 +2,100 @@ import React from "react";
 import "./Collaborations.css";
 
 const Collaborations = () => {
-  // Datos de las Alianzas
+  // Alianzas (Partners)
   const partners = [
     {
-      id: 2,
-      name: "",
+      id: 1,
+      name: " ",
       logo: "/Images/kaizen_it.webp",
       url: "https://kaizenit.com.ar/",
     },
+    // Agregá más alianzas si querés...
   ];
 
+  // Clientes
   const clients = [
     {
       id: 1,
-      name: "",
+      name: " ",
       logo: "/Images/coop-logo.png",
       url: "https://cooperativaprogresoseguridad.com/",
     },
-//    {
-//      id: 2,
-//      name: "Cliente 2",
-//     logo: "/Images/b.webp",
-//      url: "b",
-//    },
-//    {
-//      id: 3,
-//      name: "Cliente 3",
-//      logo: "/Images/c.webp",
-//      url: "c",
-//    },
+    // Más clientes opcionales...
   ];
+
+  const safeAlt = (prefix, name) =>
+    (name && name.trim().length ? `${prefix} ${name}` : prefix);
+
   return (
-    <section className="collaborations-section">
-      <div className="container">
-        <h2 className="section-title" id="partners">⸻ Alianzas / Productos ⸻</h2>
-        <div className="partners-grid">
-          {partners.map((partner) => (
+    <section className="collaborations-section" aria-label="Alianzas y Clientes">
+      {/* Capas decorativas 100% CSS (sin imágenes) */}
+      <span className="bg-grid" aria-hidden="true" />
+      <span className="bg-dots" aria-hidden="true" />
+      <span className="bg-blob-left" aria-hidden="true" />
+      <span className="bg-blob-right" aria-hidden="true" />
+
+      {/* Columna: Alianzas */}
+      <div className="column">
+        <div className="accent-plate" aria-hidden="true" />
+        <h2 className="section-title" id="partners">Alianzas 🔗</h2>
+
+        <div className="partners-grid" role="list" aria-labelledby="partners">
+          {partners.map((p) => (
             <a
-              key={partner.id}
-              href={partner.url}
+              role="listitem"
+              key={p.id}
+              href={p.url}
               className="partner-card"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={p.name ? `Abrir sitio de ${p.name}` : "Abrir sitio de alianza"}
             >
-              <div className="partner-logo">
+              <div className="partner-logo" aria-hidden="true">
                 <img
-                  src={partner.logo}
-                  alt={`Logo de ${partner.name}`}
+                  src={p.logo}
+                  alt={safeAlt("Logo de", p.name)}
+                  loading="lazy"
                   onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = '/Images/placeholder.svg';
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "/Images/placeholder.svg";
                   }}
                 />
               </div>
-              <h3 className="partner-name">{partner.name}</h3>
+              <h3 className="partner-name">{p.name || "Alianza"}</h3>
             </a>
           ))}
         </div>
       </div>
-      <div className="container">
-        <h2 className="section-title" id="clientes">⸻ Nuestros Clientes ⸻</h2>
-        <div className="partners-grid">
-          {clients.map((client) => (
+
+      {/* Columna: Clientes */}
+      <div className="column">
+        <div className="accent-plate" aria-hidden="true" />
+        <h2 className="section-title" id="clientes">Clientes 🤝</h2>
+
+        <div className="partners-grid" role="list" aria-labelledby="clientes">
+          {clients.map((c) => (
             <a
-              key={client.id}
-              href={client.url}
+              role="listitem"
+              key={c.id}
+              href={c.url}
               className="partner-card"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={c.name ? `Abrir sitio de ${c.name}` : "Abrir sitio de cliente"}
             >
-              <div className="partner-logo">
+              <div className="partner-logo" aria-hidden="true">
                 <img
-                  src={client.logo}
-                  alt={`Logo de ${client.name}`}
+                  src={c.logo}
+                  alt={safeAlt("Logo de", c.name)}
+                  loading="lazy"
                   onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = '/Images/placeholder.svg';
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "/Images/placeholder.svg";
                   }}
                 />
               </div>
-              <h3 className="partner-name">{client.name}</h3>
+              <h3 className="partner-name">{c.name || "Cliente"}</h3>
             </a>
           ))}
         </div>

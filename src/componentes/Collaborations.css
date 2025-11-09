@@ -1,138 +1,253 @@
+/* ==== Sección full-width al 100% ==== */
 .collaborations-section {
-  padding: 80px 40px;
-  background-color: black;
-
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 100px 0;
+  background: radial-gradient(1000px 600px at 20% 0%, rgba(88,112,255,0.08), transparent),
+              radial-gradient(800px 500px at 80% 20%, rgba(32,201,151,0.08), transparent),
+              #060a14;
+  color: #e6e9ef;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 1;
+  animation: backgroundFloat 30s linear infinite alternate;
 }
 
+/* fondo animado sutil */
+@keyframes backgroundFloat {
+  0% { background-position: 0% 0%, 100% 0%; }
+  100% { background-position: 100% 50%, 0% 50%; }
+}
+
+/* ==== Container ==== */
+.collaborations-section .container {
+  all: unset;
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 4vw;
+  box-sizing: border-box;
+}
+
+/* ==== Títulos ==== */
 .section-title {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.9;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 40px;
   text-align: center;
-  font-size: 1.8rem;
-  color: #3498db;
-  margin-bottom: 15px;
+  background: linear-gradient(90deg, #eaf2ff, #a6b4ff 40%, #9ef7d6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.section-subtitle {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #7f8c8d;
-}
-
+/* ==== Grilla de logos ==== */
 .partners-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
+  gap: 40px;
   justify-items: center;
+  align-items: center;
   width: 100%;
-  padding-bottom: 40px;
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
 }
 
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==== Tarjetas ==== */
 .partner-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-  padding: 16px;
-  border-radius: 10px;
-  background: rgba(80, 94, 110, 0.877);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  padding: 20px;
   width: 100%;
   max-width: 280px;
-  margin-top: 40px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  transform-style: preserve-3d;
+  overflow: hidden;
 }
+.partner-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(250px 150px at 50% 30%, rgba(120,170,255,.3), transparent 60%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.partner-card:hover::before { opacity: 1; }
 
 .partner-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(118, 216, 187, 0.616);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 14px 30px rgba(0,0,0,.35);
+  background: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
 }
 
+/* ==== Logo ==== */
 .partner-logo {
-  height: 135px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 14px;
+  width: 150px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255,255,255,0.25);
+  margin-bottom: 12px;
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.15),
+              0 0 8px rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  transition: transform .3s ease, background .3s ease, box-shadow .3s ease;
 }
-
+.partner-card:hover .partner-logo {
+  transform: scale(1.07) rotateX(8deg) rotateY(-6deg);
+  background: rgba(255,255,255,0.35);
+  box-shadow: inset 0 0 25px rgba(255,255,255,0.25),
+              0 0 10px rgba(255,255,255,0.3);
+}
 .partner-logo img {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.85;
-  transition: all 0.3s ease;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,.35));
 }
 
-.partner-card:hover .partner-logo img {
-  filter: grayscale(0%);
-  opacity: 1;
-}
-
+/* ==== Nombre ==== */
 .partner-name {
-  color: rgb(236, 236, 236);
-  font-size: 1.2rem;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.9;
   text-align: center;
-  margin: 0;
-  transition: color 0.3s ease;
 }
 
-.partner-card:hover .partner-name {
-  color: #333edb;
+/* ==== Hover Glow ==== */
+.partner-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(120deg, #7aa2ff, #55e0b9, #7aa2ff);
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity .25s ease, background-position 1s linear;
+  z-index: 0;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.partner-card:hover::after {
+  opacity: 1;
+  background-position: 100% 0%;
 }
 
-/* Responsive */
+/* ==== Responsividad ==== */
 @media (max-width: 768px) {
   .partners-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 20px;
+    gap: 28px;
   }
-
-  .section-title {
-    font-size: 1.6rem;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
-  }
-
   .partner-logo {
-    height: 70px;
+    width: 130px;
+    height: 130px;
   }
-
   .partner-card {
-    padding: 14px;
-  }
-
-  .partner-name {
-    font-size: 1.05rem;
+    max-width: 220px;
   }
 }
 
-@media (max-width: 480px) {
-
-  .partners-grid {
-   justify-content: center;       /* centrado horizontal */
-   justify-items: center;         /* centra las celdas */
-   margin: 0 auto;                /* centrado del grid en el contenedor */
-   width: 100%;
+/* ==== Reduce motion ==== */
+@media (prefers-reduced-motion: reduce) {
+  .partner-card,
+  .partner-card::before,
+  .partner-card::after,
+  .partner-logo {
+    transition: none !important;
+    animation: none !important;
   }
+}
 
+/* ==== Contenedor principal que envuelve alianzas y clientes ==== */
+.collaborations-section {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 100px 0;
+  background: radial-gradient(1000px 600px at 20% 0%, rgba(88,112,255,0.08), transparent),
+              radial-gradient(800px 500px at 80% 20%, rgba(32,201,151,0.08), transparent),
+              #060a14;
+  color: #e6e9ef;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 1;
+  animation: backgroundFloat 30s linear infinite alternate;
+
+  display: flex;                 /* 💡 coloca las secciones lado a lado */
+  flex-wrap: wrap;               /* 💡 permite que se acomoden en mobile */
+  justify-content: space-evenly; /* 💡 separa equilibradamente */
+  gap: 60px;                     /* 💡 espacio entre ambas columnas */
+}
+
+/* ==== Cada bloque (Alianzas y Clientes) ==== */
+.collaborations-section .container {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;              /* 💡 ancho para modo escritorio */
+  max-width: 600px;
+  min-width: 300px;        /* 💡 asegura buena legibilidad */
+  box-sizing: border-box;
+}
+
+/* ==== En pantallas pequeñas (mobile) ==== */
+@media (max-width: 768px) {
   .collaborations-section {
-    padding: 40px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
   }
+  .collaborations-section .container {
+    width: 90%; /* 💡 se apilan, ocupan casi todo el ancho */
+  }
+}
 
-  .partner-logo img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+/* Usa flex en vez de grid para que todas midan igual */
+.partners-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: stretch;
+}
 
-  .partner-card {
-    padding: 12px;
-    text-align: center;
-  }
-
-  .partner-name {
-    font-size: 1rem;
-  }
+/* Todas las cards con el mismo ancho exacto */
+.partner-card {
+  width: 280px;         /* ↔ fija el ancho */
+  max-width: 280px;     /* por si alguna regla previa pisa el width */
+  box-sizing: border-box;
 }

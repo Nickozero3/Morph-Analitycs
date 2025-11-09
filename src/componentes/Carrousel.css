@@ -1,106 +1,208 @@
-.dual-carousel {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
+:root {
+  --transition-time: 0.8s;
+  --easing: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --radius: 14px;
+  --header-height: 72px;
+
+  /* Velocidad base de la animación (cada fila puede sobrescribir con --duration inline) */
+  --duration: 30s;
+
+  /* Tipografía y tamaños */
+  --chip-font: clamp(14px, 2.2vw, 18px);
+  --title-size: clamp(18px, 3.6vw, 28px);
+  --sub-size: clamp(12px, 2.6vw, 14px);
 }
 
-.dual-carousel h2 {
-  margin-bottom: 30px;
-  color: white;
-}
-
-.carousel-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* === Sección full-bleed con look futurista (misma estética que tenías) === */
+.words-carousel {
   position: relative;
-  margin-bottom: 20px;
-}
-
-.slides {
-  display: flex;
-  gap: 20px;
-  overflow: hidden;
-  width: calc(100% - 100px);
-  justify-content: center;
-}
-
-.slide {
-  flex: 0 0 calc(50% - 10px);
-  transition: transform 0.5s ease;
-}
-
-.slide img {
   width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: calc(var(--header-height) + 8px);
+  padding: 64px 0 1px;
+  background:
+    radial-gradient(1000px 600px at 10% 0%, rgba(88,112,255,0.08), transparent),
+    radial-gradient(900px 500px at 90% 20%, rgba(32,201,151,0.08), transparent),
+    #070b14;
+  color: #e6e9ef;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-align: center;
+  isolation: isolate;
 }
 
-.nav-button {
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
-  cursor: pointer;
+/* Contenedor central */
+.carousel-inner {
+  position: relative;
+  max-width: 1200px;
+  width: 96%;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+/* Fondo rejilla suave animada */
+.words-carousel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 28px);
+  mask-image: radial-gradient(70% 60% at 50% 50%, #000 60%, transparent 100%);
+  opacity: 0.4;
+  animation: gridScroll 40s linear infinite alternate;
+  pointer-events: none;
+}
+@keyframes gridScroll {
+  from { transform: translateY(-8px); }
+  to   { transform: translateY(8px); }
+}
+
+.words-carousel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(85,224,185,0.06), rgba(120,180,255,0.06));
+  mix-blend-mode: overlay;
+  animation: linesDrift 25s linear infinite alternate;
+  pointer-events: none;
+}
+@keyframes linesDrift {
+  from { transform: translateX(-8px); }
+  to   { transform: translateX(8px); }
+}
+
+/* Blobs decorativos */
+.bg-blob-left, .bg-blob-right {
+  position: absolute;
+  width: 30vw;
+  height: 30vw;
+  max-width: 400px;
+  max-height: 400px;
+  filter: blur(40px);
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+}
+.bg-blob-left {
+  left: -6vw;
+  top: -5vw;
+  background: radial-gradient(closest-side, #7aa2ff, transparent 70%);
+  animation: blobPulse 18s ease-in-out infinite alternate;
+}
+.bg-blob-right {
+  right: -6vw;
+  bottom: -5vw;
+  background: radial-gradient(closest-side, #55e0b9, transparent 70%);
+  animation: blobPulse 20s ease-in-out infinite alternate-reverse;
+}
+@keyframes blobPulse {
+  from { transform: scale(.95); }
+  to { transform: scale(1.05); }
+}
+
+/* Header de sección */
+.words-header {
+  margin-bottom: 22px;
+}
+.words-title {
+  margin: 0 0 15px;
+  font-size: var(--title-size);
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+.words-sub {
+  margin: 0;
+  font-size: var(--sub-size);
+  opacity: .7;
+}
+
+/* === Pila de “marquees” (varias filas) === */
+.marquee-stack {
+  display: grid;
+  gap: 4px;
+}
+
+/* Cada marquee (fila que corre infinito) */
+/* Antes tenía gap: var(--gap);  */
+.marquee {
+  --gap: 28px;           /* conservamos la var para usarla dentro del grupo */
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  /* gap: var(--gap);  👈 eliminar */
+  gap: 0;                /* 👈 sin gap entre los dos grupos */
+  mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+  padding: 6px 0;
+}
+
+
+/* El grupo se repite dos veces para lograr el loop perfecto */
+.marquee__group {
+  /* Antes: min-width: 100%;  👈 produce tramo vacío si el contenido no llena */
+  /* min-width: 100%;  */
+  flex-shrink: 0;
+  flex-basis: auto;   /* 👈 ancho según contenido */
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
+  gap: var(--gap);    /* 👈 el espacio entre chips vive acá adentro */
+  animation: scroll-left var(--duration) linear infinite;
 }
 
-.nav-button:hover {
-  background: rgba(0, 0, 0, 0.8);
-  transform: scale(1.1);
+
+.marquee--reverse .marquee__group {
+  animation-name: scroll-right;
 }
 
-.prev {
-  margin-right: 10px;
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
 }
 
-.next {
-  margin-left: 10px;
+@keyframes scroll-right {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
 }
 
-.indicators {
-  display: flex;
-  justify-content: center;
+/* “Pills”/chips de palabras */
+.word-chip {
+  display: inline-flex;
+  align-items: center;
   gap: 10px;
-  margin-top: 20px;
+  padding: 10px 16px;
+  font-size: var(--chip-font);
+  line-height: 1;
+  color: #e6e9ef;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+  transition: transform .25s var(--easing), background .25s var(--easing), border-color .25s var(--easing);
+  white-space: nowrap; /* evita saltos entre palabras/emojis */
 }
 
-.indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #ccc;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* Hover: “respira” y realza un poquito */
+.word-chip:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.25);
 }
 
-.indicator.active {
-  background: #333;
-  transform: scale(1.2);
+/* Pausa al pasar el mouse por la fila (útil en desktop) */
+.marquee:hover .marquee__group {
+  animation-play-state: paused;
 }
 
-/* Responsive */
+/* Responsive tweaks */
 @media (max-width: 768px) {
-  .slides {
-    width: calc(100% - 80px);
+  .words-carousel {
+    padding: 56px 0 68px;
   }
-  
-  .slide {
-    flex: 0 0 100%;
+  .marquee {
+    --gap: 16px;
   }
-  
-  .nav-button {
-    width: 35px;
-    height: 35px;
+  .word-chip {
+    padding: 9px 14px;
   }
 }
-

@@ -4,11 +4,9 @@ html, body, #root {
 }
 
 .container {
+  position: relative;           /* crea stacking context sobre el canvas */
+  z-index: 1;                   /* contenido arriba del canvas (z:0) */
   display: grid;
   grid-template-rows: auto 1fr auto;
-  min-height: auto;
-}
-
-.item.content {
-  overflow-y: auto;
+  min-height: 100%;             /* aseguremos altura */
 }

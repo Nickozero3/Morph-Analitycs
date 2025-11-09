@@ -1,0 +1,15 @@
+.matrix-rain-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+
+  /* 🔧 antes: z-index: 0; -> quedaba debajo de fondos opacos */
+  z-index: 1500;            /* por encima del contenido */
+
+  pointer-events: none;     /* NO bloquea clics/scroll */
+  opacity: 0.55;            /* intensidad global */
+  mix-blend-mode: screen;   /* luce bien sobre fondos oscuros */
+}
+
+/* Si querés menos brillo, baja la opacidad a 0.35–0.45 */

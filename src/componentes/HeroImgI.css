@@ -1,9 +1,14 @@
+/* =======================
+   HERO BASE (tu estilo original)
+   ======================= */
 .hero-container {
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 20px 0;
-background-color: black;
+  background-color: black;
+  position: relative;     /* para fondos decorativos */
+  isolation: isolate;
 }
 
 .hero-content {
@@ -11,27 +16,23 @@ background-color: black;
   flex-direction: row;
   align-items: flex-start; /* Alinea los items al inicio (parte superior) */
   background-color: #000000;
-  padding: 30px;
+  padding: 27px;
   gap: 40px;
   max-width: 1200px;
-  width: 80%;
+  width: 90%;
   border: 1px solid #ffffff;
   border-radius: 25px;
   margin: 40px auto;
 }
 
 .hero-image {
-  width: 400px; /* o el ancho que prefieras */
-  height: 400px; /* altura fija para mantener proporción cuadrada */
-  object-fit: contain; /* esto hace el efecto "cover" */
+  width: 250px;           /* o el ancho que prefieras */
+  height: 250px;          /* altura fija para mantener proporción cuadrada */
+  /* object-fit: contain; /* esto hace el efecto "cover" */
   border-radius: 15px;
   object-position: center; /* centra la imagen dentro del contenedor */
   mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(
-    circle at center,
-    black 40%,
-    transparent 100%
-  );
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
 }
 
 .hero-text {
@@ -42,13 +43,17 @@ background-color: black;
 }
 
 h1 {
-  font-size: 1.8rem;
-  color: #000;
-  background-color: #4b92e2e5;
-  border-radius: 5px;
+  font-family: 'Ubuntu', 'Inter', 'Segoe UI', sans-serif; /* fuente moderna */
+  font-size: clamp(1rem, 4vw, 1rem);
+  color: #979ead; /* tono gris-azulado elegante */
   text-align: center;
-  padding: 5px 20px;
-  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: none;       /* ❌ elimina el cuadrado azul */
+  border-radius: 0;       /* ❌ elimina bordes redondeados */
+  padding: 0;             /* ❌ elimina el relleno */
+  margin-bottom: 20px;
+  text-transform: none;
 }
 
 p {
@@ -95,8 +100,9 @@ p {
   width: 100%;
   max-width: 400px;
   aspect-ratio: 1 / 1; /* Mantiene proporción cuadrada */
-  border-radius: 15px;
+  border-radius: 35px;
   overflow: hidden;
+  outline: none; /* para focus en mobile cuando uses tabIndex */
 }
 
 .hero-image {
@@ -111,28 +117,35 @@ p {
   mask-mode: match-source;
 }
 
-
 .image-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
+  opacity: 0;                 /* 🔹 oculto por defecto */
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.45s ease;
   border-radius: 15px;
   padding: 1rem;
   text-align: center;
+  transform: translateY(6px); /* sutil desplazamiento al aparecer */
 }
 
+/* 🔹 Mostrar overlay SOLO en hover (desktop) */
 .hero-image-wrapper:hover .image-overlay {
   opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* 🔹 Fallback para touch: mostrar al focus/tap */
+.hero-image-wrapper:focus-within .image-overlay,
+.hero-image-wrapper:focus .image-overlay {
+  opacity: 1;
+  transform: translateY(0);
   pointer-events: auto;
 }
 
@@ -149,8 +162,214 @@ p {
   }
 
   .hero-image-wrapper {
-    width: 100%;
-    max-width: 90vw; /* más adaptable aún */
-    margin-bottom: 20px;
+    width: 99%;
+    height: 95%;
+    max-width: 89vw; /* más adaptable aún */
+    margin-bottom: 1px;
   }
+}
+
+/* =======================
+   EFECTOS DE ANIMACIÓN NUEVOS
+   ======================= */
+
+:root {
+  --enter-dur: .8s;
+  --enter-ease: cubic-bezier(.22,.61,.36,1);
+  --stagger-step: 60ms; /* intervalo entre palabras */
+}
+
+/* Respetar usuarios con reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .word,
+  .parallax-y { animation: none !important; transition: none !important; }
+}
+
+/* Estado base (antes de entrar a viewport) */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(18px) scale(0.995);
+  filter: blur(4px);
+  will-change: opacity, transform, filter;
+}
+
+/* Al entrar */
+.animate-on-scroll.inview {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+  transition:
+    opacity var(--enter-dur) var(--enter-ease),
+    transform var(--enter-dur) var(--enter-ease),
+    filter var(--enter-dur) var(--enter-ease);
+}
+
+/* Al salir: fade-blur por defecto */
+.animate-on-scroll.outview {
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(6px);
+}
+
+/* ===== Stagger de palabras general ===== */
+[data-split="words"] .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px) rotate(.001deg);
+  filter: blur(3px);
+  transition:
+    opacity .5s var(--enter-ease),
+    transform .5s var(--enter-ease),
+    filter .5s var(--enter-ease);
+  transition-delay: calc(var(--i) * var(--stagger-step));
+}
+.inview [data-split="words"] .word {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+  filter: blur(0);
+}
+/* Hover sutil */
+[data-split="words"] .word:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== EXCEPCIÓN: overlay debe animar SOLO en hover/focus ===== */
+/* Base del overlay: palabras ocultas incluso si el hero está 'inview' */
+.overlay-text[data-split="words"] .word {
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(3px);
+  transition:
+    opacity .45s var(--enter-ease),
+    transform .45s var(--enter-ease),
+    filter .45s var(--enter-ease);
+  transition-delay: 0s;
+}
+/* Cancelamos la regla global que las mostraría al entrar a viewport */
+.inview .overlay-text[data-split="words"] .word {
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(3px);
+}
+/* Al pasar el mouse / focus en el wrapper: revelar con stagger */
+.hero-image-wrapper:hover .overlay-text[data-split="words"] .word,
+.hero-image-wrapper:focus-within .overlay-text[data-split="words"] .word,
+.hero-image-wrapper:focus .overlay-text[data-split="words"] .word {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  transition-delay: calc(var(--i) * var(--stagger-step));
+}
+
+/* Parallax sutil en el contenedor de la imagen */
+.parallax-y {
+  transform: translate3d(0, var(--parallaxY, 0), 0);
+  will-change: transform;
+  transition: transform .12s linear;
+}
+
+/* Extra: entrada suave de la imagen */
+.parallax-y .hero-image {
+  animation: floatIn .9s var(--enter-ease) both;
+}
+@keyframes floatIn {
+  from { opacity: 0; transform: scale(0.98); filter: brightness(.9) blur(2px); }
+  to   { opacity: 1; transform: scale(1);     filter: brightness(1) blur(0); }
+}
+
+/* ⛔️ IMPORTANTE: NO forzar overlay visible por estado inview/outview */
+.animate-on-scroll.inview .image-overlay {
+  opacity: 0;               /* mantener oculto */
+  transform: translateY(0); /* listo para animar en hover/focus */
+}
+.animate-on-scroll.outview .image-overlay {
+  opacity: 0;               /* mantener oculto */
+  transform: translateY(6px);
+}
+
+/* =======================
+   FONDOS DECORATIVOS (para tus <div class="bg-...">)
+   ======================= */
+.bg-grid, .bg-lines, .bg-blob-left, .bg-blob-right, .bg-radial {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-grid {
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 28px);
+  mask-image: radial-gradient(70% 60% at 50% 50%, #000 60%, transparent 100%);
+  opacity: 0.25;
+  animation: gridScroll 40s linear infinite alternate;
+}
+@keyframes gridScroll {
+  from { transform: translateY(-8px); }
+  to   { transform: translateY(8px); }
+}
+
+.bg-lines {
+  background: linear-gradient(120deg, rgba(85,224,185,0.08), rgba(120,180,255,0.08));
+  mix-blend-mode: overlay;
+  animation: linesDrift 25s linear infinite alternate;
+  opacity: 0.25;
+}
+@keyframes linesDrift {
+  from { transform: translateX(-8px); }
+  to   { transform: translateX(8px); }
+}
+
+.bg-blob-left, .bg-blob-right {
+  width: 30vw;
+  height: 30vw;
+  max-width: 420px;
+  max-height: 420px;
+  filter: blur(42px);
+  opacity: 0.15;
+}
+.bg-blob-left {
+  left: -6vw;
+  top: -5vw;
+  background: radial-gradient(closest-side, #7aa2ff, transparent 70%);
+  animation: blobPulse 18s ease-in-out infinite alternate;
+}
+.bg-blob-right {
+  right: -6vw;
+  bottom: -5vw;
+  background: radial-gradient(closest-side, #55e0b9, transparent 70%);
+  animation: blobPulse 20s ease-in-out infinite alternate-reverse;
+}
+@keyframes blobPulse {
+  from { transform: scale(.95); }
+  to { transform: scale(1.05); }
+}
+
+.bg-radial {
+  background: radial-gradient(600px 300px at 50% 0%, rgba(88,112,255,0.08), transparent 70%);
+  opacity: 0.4;
+}
+
+/* ==== FIX: asegurar que el overlay se vea en hover/focus ==== */
+/* 1) Aseguramos que el overlay esté por encima de la imagen */
+.hero-image { z-index: 0; position: relative; }
+.image-overlay { z-index: 1; }
+
+/* 2) Reforzamos hover/focus con mayor especificidad y lo ponemos al final */
+@media (hover: hover) {
+  .animate-on-scroll .hero-image-wrapper:hover .image-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* Foco/tap en mobile o teclado */
+.animate-on-scroll .hero-image-wrapper:focus-within .image-overlay,
+.animate-on-scroll .hero-image-wrapper:focus .image-overlay {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
